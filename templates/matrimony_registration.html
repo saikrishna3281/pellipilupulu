@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <title>Pelli Pilupulu Matrimony</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header{
+            height: 5%;
+            text-align: center;
+            background: #b30086;
+            color: #ffaf01;
+            font-size: 50px;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #b30086;
+        }
+
+        .topnav h2{
+            text-align: center;
+            overflow: hidden;
+            background: #b30086;
+            color: #ffaf01;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+          .topnav h5{
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            background: #b30086;
+            color: #ffaf01;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+        .topnav a {
+            float: right;
+            color: #f2f2f2;
+            text-align: right;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #a6a6a6;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #a3c2c2;
+            color: white;
+        }
+
+
+        .dash{
+            border: 1px solid red;
+            width: 120px;
+            height: 0px;
+
+      }
+
+
+      .imagecenter {
+        align-content: center;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+/* Styles the thumbnail */
+
+a.lightbox img {
+    align-content: center;
+    text-align: center;
+    height: 150px;
+
+    }
+
+    /* Styles the lightbox, removes it from sight and adds the fade-in transition */
+
+    .lightbox-target {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    overflow: hidden;
+    }
+
+    /* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+
+    .lightbox-target img {
+    margin: auto;
+    max-height: 0%;
+    max-width: 0%;
+    z-index: 1001;
+    align-content: center;
+    text-align: center;
+    border: 3px solid white;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+    box-sizing: border-box;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    }
+
+    /* Styles the close link, adds the slide down transition */
+
+    a.lightbox-close {
+    display: block;
+    width:50px;
+    height:50px;
+    box-sizing: border-box;
+    background: white;
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    top: -80px;
+    right: 0;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    }
+
+    /* Provides part of the "X" to eliminate an image from the close link */
+
+    a.lightbox-close:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    z-index: 1001;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+    }
+
+    /* Provides part of the "X" to eliminate an image from the close link */
+
+    a.lightbox-close:after {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    }
+
+    /* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+
+    .lightbox-target:target {
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+    align-content: center;
+    text-align: center;
+    }
+
+    .lightbox-target:target img {
+    max-height: 100%;
+    max-width: 100%;
+    z-index: 1001;
+    align-content: center;
+    text-align: center;
+    }
+
+    .lightbox-target:target a.lightbox-close {
+    top: 0px;
+    align-content: center;
+    text-align: center;
+    }
+
+    .help {
+        display: block;
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .help.is-danger {
+        color: #ff3860;
+        align-content: center;
+        text-align: center;
+      }
+    </style>
+
+    {% if alert_message != ""%}
+    <script>alert('{{alert_message}}')</script>
+    {% endif %}
+
+
+</head>
+
+<body>
+    <div class="dash"></div>
+    <div class="topnav">
+        <h2>Pelli Pilupulu Matrimony</h2>
+        <h5>Helpline number: 9000966999</h5>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'update_password' %}">Change Password</a>
+        <a href="{% url 'show_users' %}">View Matches</a>
+  </div>
+  <div style="text-align: center; color: darkmagenta;">
+      <h3>
+      Matrimony Profile Id : {{ bsssid }}
+    </h3>
+  </div>
+
+ <div class="lightbox-target" id="profile_pic">
+    <img src= "{% get_media_prefix %}/profile_images/{{ reg_id }}/{{ form.profile_pic.value }}">
+    <a class="lightbox-close" href="#"></a>
+ </div>
+
+ {% if form.profile_pic.value%}
+        <a class="lightbox" href="#profile_pic" style="text-align:center">
+            <img class="imagecenter" src= "{% get_media_prefix %}/profile_images/{{ reg_id }}/{{ form.profile_pic.value }}">
+        </a>
+    {% else %}
+            <img class="imagecenter" src= "{% get_media_prefix %}sample.png" height="100px", width="80px">
+    {% endif %}
+
+
+    <form id="regForm" action="matrimony_registration" method="POST" enctype="multipart/form-data">
+        {% if is_readonly != 'read_only'%}
+            <div class="imagecenter"> {{form.profile_pic}}</div>
+            {% for error in form.profile_pic.errors %}
+            <p class="help is-danger">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <div class="container">
+            <div class="modal-body">
+                <div class="row">
+
+        <div class="col-md">
+        {% csrf_token %}
+        {% for non_field_error in form.non_field_errors %}
+            <p class="help is-danger">{{ non_field_error }}</p>
+        {% endfor %}
+
+        {% for field in form %}
+        {% if field.label != "profile_pic" %}
+            {% if forloop.counter0|divisibleby:9 and forloop.counter0 > 0 %}
+                </div>
+                <div class="col-md">
+            {% endif %}
+            <div class="col-md">
+                <label>{{ field.label}}</label>
+                {{ field }}
+                {% for error in field.errors %}
+                    <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+        {% endif %}
+
+        <br>
+    </div>
+    <!-- </div> -->
+    {% endfor %}
+
+</div>
+
+                    <table style = "width:100%; line-height:50px;">
+                        <tr style="line-height:50px;">
+                            <td width="45%">
+                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#famModal">
+                                    Family Background
+                                </button>
+                            </td>
+                            <td width="50%" style="padding-left: 5%;">
+                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#jobModal">
+                                    Job Details
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="45%">
+                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#personalDetailsModal">
+                                    Personal Details
+                                </button>
+                            </td>
+                            <td width="50%" style="padding-left: 5%;">
+                                <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#requirementsModal">
+                                    Requirements
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                {% if button_type == 'update' %}
+                                <input type="submit" class="btn btn-primary" name="update" value="Edit">
+                                {% endif %}
+
+                                {% if button_type == 'submit' %}
+                                <input type="submit" class="btn btn-primary" name="submit" value="Save">
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                    </table>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="famModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Family Background</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+                <!-- <form action="" novalidate> -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md">
+
+                                <!-- {% with counter=1 %} -->
+                                {% for field in family_background %}
+                                <!-- <div class="form-group"> -->
+                                <!-- <label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label> -->
+                                {% if forloop.counter0|divisibleby:3 and forloop.counter0 > 0 %}
+                            </div>
+                            <div class="col-md">
+                                {% endif %}
+                                <div class="col-md">
+                                    <label>{{ field.label}}</label>
+                                    {{ field }} {% for error in field.errors %}
+                                    <p class="help is-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <!-- </div> -->
+                                {% endfor %}
+                                <!-- {% endwith %} -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- </form> -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Continue</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="personalDetailsModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Personal Details</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+                <!-- <form action="" novalidate> -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md">
+
+                            <!-- {% with counter=1 %} -->
+                            {% for field in personal_details %}
+                            <!-- <div class="form-group"> -->
+                            <!-- <label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label> -->
+                            {% if forloop.counter0|divisibleby:5 and forloop.counter0 > 0 %}
+                        </div>
+                        <div class="col-md">
+                            {% endif %}
+                            <div class="col-md">
+                                <label>{{ field.label}}</label>
+                                {{ field }} {% for error in field.errors %}
+                                <p class="help is-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <!-- </div> -->
+                            {% endfor %}
+                            <!-- {% endwith %} -->
+                        </div>
+                    </div>
+                </div>
+            <!-- </form> -->
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Continue</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="requirementsModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Requirements</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+                <!-- <form action="" novalidate> -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md">
+
+                            <!-- {% with counter=1 %} -->
+                            {% for field in requirements %}
+                            <!-- <div class="form-group"> -->
+                            <!-- <label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label> -->
+                            {% if forloop.counter0|divisibleby:3 and forloop.counter0 > 0 %}
+                        </div>
+                        <div class="col-md">
+                            {% endif %}
+                            <div class="col-md">
+                                <label>{{ field.label}}</label>
+                                {{ field }} {% for error in field.errors %}
+                                <p class="help is-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <!-- </div> -->
+                            {% endfor %}
+                            <!-- {% endwith %} -->
+                        </div>
+                    </div>
+                </div>
+                <!-- </form> -->
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Continue</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="jobModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Job Details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- <form action="" novalidate> -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md">
+
+                            <!-- {% with counter=1 %} -->
+                            {% for field in job_details_form %}
+                            <div class="col-md">
+                                <label>{{ field.label}}</label>
+                                {{ field }} {% for error in field.errors %}
+                                <p class="help is-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <!-- </div> -->
+                            {% endfor %}
+                            <!-- {% endwith %} -->
+                        </div>
+                    </div>
+                </div>
+                <!-- </form> -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Continue</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+    <!-- <div class="col-sm-4">
+<img  src=" {% static '2.jpg' %}"  width="350" height="200">
+<img src=" {% static 'kasiyatra.jpg' %}" width="350" height="250">
+<img src="{% static '3.jpg' %}"  width="350" height="200">
+<img src=" {% static 'imp.jpg' %}"  width="350" height="250">
+
+</div> -->
+
+</body>
+
+</html>

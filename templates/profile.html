@@ -1,0 +1,54 @@
+<html>
+  {% load static %}
+  <head>
+    <link rel="stylesheet" type="text/css" href=  "{% static 'registration.css' %}"/>
+    <style>
+      table {  
+        color: #333;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 40%; 
+        border-collapse: collapse;
+        overflow: hidden;
+        float: left;
+         border-spacing: 40; 
+        align-content: center;
+    }
+    
+    td, th {  
+        border: 1px solid transparent; /* No more visible border */
+        height: 50px; 
+        transition: all 0.3s;  /* Simple transition for hover effect */
+    }
+    
+    th {  
+        background: #DFDFDF;  /* Darken header a bit */
+        font-weight: bold;
+    }
+    
+    td {  
+        background: #FAFAFA;
+        text-align: center;
+        width: 10%;
+    }
+    
+    /* Cells in even rows (2,4,6...) are one color */        
+    tr:nth-child(even) td { background: #F1F1F1; }   
+    
+    /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
+    tr:nth-child(odd) td { background: #FEFEFE; }  
+    
+    tr:hover td{
+      background-color: lightyellow;
+    }
+      </style>
+
+      <div class="header">
+        <h1>Matrimony</h1>
+      </div>
+  </head>
+<body>
+  <div class="container">    
+      {{result}}
+  </div>
+  </body>
+</html>

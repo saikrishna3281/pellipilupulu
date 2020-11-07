@@ -1,0 +1,167 @@
+html
+{
+  overflow: scroll;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+height: 100px;
+text-align: center;
+background: #a34c98;
+color: orange;
+font-size: 50px;
+position: relative;
+font-family: Luminari;
+font-weight: bold;
+}
+
+
+.footer {
+height: 40px;
+text-align: center;
+background: #a34c98;
+color: rgb(255, 175, 1);
+position: relative;
+font-size: 20px;
+}
+
+select {
+padding: 10px;
+width: 100%;
+font-size: 17px;
+font-family: Raleway;
+border: 1px solid #aaaaaa;
+}
+
+#regForm {
+background-color: #ffffff;
+margin: 50px auto;
+padding: 1px;
+width: 40%;
+min-width: 30px;
+padding-left: 100px;
+}
+
+/* Style the input fields */
+input {
+padding: 10px;
+width: 100%;
+font-size: 17px;
+font-family: Raleway;
+border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+font-family: Arial, Helvetica, sans-serif;
+display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+height: 15px;
+width: 15px;
+margin: 0 2px;
+background-color: #bbbbbb;
+border: none;
+border-radius: 50%;
+display: inline-block;
+opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+background-color: #4CAF50;
+}
+
+.nextBtn, .prevBtn {
+background-color: #4CAF50; /* Green */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.split {
+height: 830px;
+width: 100%;
+position: relative;
+overflow: auto;
+}
+
+/* Control the left side */
+.left {
+height: 100%;
+left: 0;
+width: 39%;
+float: left;
+background-color: rgb(253, 253, 253);
+border-right: 2px solid blanchedalmond;
+}
+
+/* Control the right side */
+.right {
+height: 100%;
+right: 0;
+width: 60%;
+float: right;
+position: relative;
+}
+
+.vl {
+  border-left: 8px solid green;
+  height: 500px;
+}
+
+.centered img {
+  position: relative;
+  height: 450px;
+  width: 50%;
+  padding-left: 150px;
+  margin: 50px auto;
+  }
+
+/* Style the image inside the centered container, if needed */
+.centeredhead img {
+position: relative;
+height: 250px;
+width: 50%;
+padding-left: 150px;
+}
+.error input, .error select {
+border: 2px red solid;
+}
+
+.error {
+border: 2px red solid;
+}
+
+.help {
+display: block;
+font-size: 0.75rem;
+margin-top: 0.25rem;
+}
+
+.help.is-danger {
+color: #ff3860;
+}

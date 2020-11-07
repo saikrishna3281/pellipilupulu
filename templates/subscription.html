@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <title>Pelli Pilupulu Matrimony</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header{
+            height: 5%;
+            text-align: center;
+            background: #b30086;
+            color: #ffaf01;
+            font-size: 50px;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #b30086;
+        }
+
+        .topnav h2{
+            text-align: center;
+            overflow: hidden;
+            background: #b30086;
+            color: #ffaf01;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+          .topnav h5{
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            background: #b30086;
+            color: #ffaf01;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+          }
+
+        .topnav a {
+            float: right;
+            color: #f2f2f2;
+            text-align: right;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #a6a6a6;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #a3c2c2;
+            color: white;
+        }
+
+
+        .dash{
+            border: 1px solid red;
+            width: 120px;
+            height: 0px;
+
+      }
+
+      table, th, td {
+        padding: 15px;
+      }
+      table {
+        border-spacing: 15px;
+      }
+
+      .help {
+        display: block;
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .help.is-danger {
+        color: #ff3860;
+      }
+
+    </style>
+    <!-- <div class="header">
+        <h1>Matrimony</h1>
+        <h5 style="text-align: right;">Logout</h5>
+    </div> -->
+
+    {% if message == 'success'%}
+    <script>alert('Successfully updated the password!!!')</script>
+    {% endif %}
+
+    {% if message == 'fail'%}
+    <script>alert('Failed to update the password :(')</script>
+    {% endif %}
+
+</head>
+
+<body>
+    <div class="dash"></div>
+    <div class="topnav">
+        <h2>BS Matrimony</h2>
+        <h5>Helpline number: 9000966999</h5>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'matrimony_registration' %}">My Matrimony</a>
+
+  </div>
+  <div style="text-align: center; color: darkmagenta;">
+      <h3>
+      Matrimony Profile Id : {{ bsssid }}
+    </h3>
+  </div>
+<br>
+<br>
+<br>
+<p style="text-align: center; font-weight: bold; color: darkviolet; font-size: 20px;">
+    You need to subscribe to bsmatrimony.com to view matrimony profiles.
+</p>
+
+<p style="text-align: center; font-weight: bold; color: darkviolet; font-size: 20px;">
+    Kindly Pay 500 rupees to Bramhana Seva through  GooglePay/PhonePay/Paytm.
+</p>
+
+<p style="text-align: center; font-weight: bold; color: darkviolet; font-size: 20px;">
+  Mobile numbers : 9000966999/9000800233
+</p>
+
+
+    {% csrf_token %}
+
+</body>
+
+</html>
